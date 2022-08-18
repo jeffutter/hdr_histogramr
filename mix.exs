@@ -7,7 +7,11 @@ defmodule HdrHistogramr.MixProject do
       version: "0.1.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      preferred_cli_env: [
+        bench: :bench
+      ],
+      aliases: aliases()
     ]
   end
 
@@ -18,10 +22,18 @@ defmodule HdrHistogramr.MixProject do
     ]
   end
 
+  def aliases do
+    [
+      bench: "run benchmark.exs"
+    ]
+  end
+
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:rustler, "~> 0.25.0"}
+      {:rustler, "~> 0.25.0"},
+      {:benchee, "~> 1.1", only: :bench},
+      {:hdr_histogram, "~> 0.5.0", only: :bench}
     ]
   end
 end

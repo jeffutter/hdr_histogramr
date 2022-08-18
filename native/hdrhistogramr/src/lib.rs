@@ -150,6 +150,8 @@ rustler::init!(
         mean,
         min,
         new,
+        new_with_max,
+        new_with_bounds,
         record,
         record_correct,
         to_binary,
