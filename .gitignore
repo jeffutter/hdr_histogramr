@@ -24,3 +24,7 @@ hdr_histogramr-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+*.so
+
+native/hdrhistogramr/target/
