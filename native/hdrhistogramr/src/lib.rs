@@ -5,6 +5,13 @@ use hdrhistogram::{
 use rustler::{resource::ResourceArc, Env, Term};
 use std::sync::Mutex;
 
+#[cfg(not(target_env = "msvc"))]
+use jemallocator::Jemalloc;
+
+#[cfg(not(target_env = "msvc"))]
+#[global_allocator]
+static GLOBAL: Jemalloc = Jemalloc;
+
 struct HG<T: Counter>(Mutex<Histogram<T>>);
 
 impl<T> HG<T>

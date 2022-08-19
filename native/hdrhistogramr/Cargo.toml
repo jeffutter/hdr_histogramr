@@ -12,3 +12,4 @@ crate-type = ["cdylib"]
 [dependencies]
 rustler = "0.25.0"
 hdrhistogram = "7.5.1"
+jemallocator = { version = "0.5", features = ["disable_initial_exec_tls"] }
