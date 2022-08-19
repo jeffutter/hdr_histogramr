@@ -47,6 +47,12 @@ fn new_with_bounds(low: u64, high: u64, sigfig: u8) -> ResourceArc<HG<u64>> {
 }
 
 #[rustler::nif]
+fn close(hg: ResourceArc<HG<u64>>) -> bool {
+    std::mem::drop(hg);
+    true
+}
+
+#[rustler::nif]
 fn record(hg: ResourceArc<HG<u64>>, v: u64) -> bool {
     let mut hg = hg.0.lock().unwrap();
     hg.record(v).unwrap();
@@ -143,6 +149,7 @@ rustler::init!(
         _value_at_percentile,
         _value_at_quantile,
         add,
+        close,
         dump,
         from_binary,
         len,

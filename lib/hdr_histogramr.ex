@@ -6,6 +6,7 @@ defmodule HDRHistogramr do
   def new(_sigfig), do: :erlang.nif_error(:nif_not_loaded)
   def new_with_max(_max, _sigfig), do: :erlang.nif_error(:nif_not_loaded)
   def new_with_bounds(_low, _high, _sigfig), do: :erlang.nif_error(:nif_not_loaded)
+  def close(_hg), do: :erlang.nif_error(:nif_not_loaded)
 
   def record(_hg, _value), do: :erlang.nif_error(:nif_not_loaded)
 
